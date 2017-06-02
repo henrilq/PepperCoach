@@ -1,0 +1,11 @@
+topic: ~intro()
+
+# Defining extra concepts out of words or group of words
+#concept:(hello) [hello hi hey "good morning" greetings]
+
+# Replying to speech
+#u:(~hello) ~hello
+
+u: (bonjour) Bonjour je suis Pepper cotche sportif. Veux tu devenir un beau gosse ?
+    u1: (oui) Parfait, entre tes loguine et mot de passe de ton compte fite bite. ^endDiscuss(oui)
+    u1: (non) OK, va manger du chorizzo alors. ^endDiscuss(non)
