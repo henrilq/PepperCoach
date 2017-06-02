@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.webkit.CookieManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -32,10 +33,8 @@ import java.util.concurrent.ExecutionException;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements RobotLifecycleCallbacks {
+public class MainActivity extends BasicActivity implements RobotLifecycleCallbacks {
 
-    @BindView(R.id.webview)
-    WebView webView;
 
     private String token;
 
@@ -45,16 +44,9 @@ public class MainActivity extends AppCompatActivity implements RobotLifecycleCal
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         //QiSDK.register(this, this);
-        WebSettings webSettings = webView.getSettings();
-        webSettings.setSaveFormData(false);
-        webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
-        webSettings.setAppCacheEnabled(false);
         String url = "https://www.fitbit.com/oauth2/authorize?response_type=token&client_id=228JV3&redirect_uri=http%3A%2F%2Fnovapps.fr&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800";
-        webView.clearHistory();
-        webView.clearCache(true);
-        webView.loadUrl(url);
-
-        webView.setWebViewClient(new MyWebViewClient());
+        CookieManager.getInstance().removeAllCookies(null);
+        CookieManager.getInstance().flush();
     }
 
     @Override
@@ -112,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements RobotLifecycleCal
                 token = values[1];
             }
             System.out.println(token);
+
         }
     }
 }

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Pepper Coach</string>
+    <string name="fitbit_auth_url">https://www.fitbit.com/oauth2/authorize?response_type=token&amp;client_id=228JV3&amp;redirect_uri=http%3A%2F%2Fnovapps.fr&amp;scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&amp;expires_in=604800</string>
+    <string name="fitbit_callback_url">http://novapps.fr</string>
 </resources>
